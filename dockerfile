@@ -11,6 +11,4 @@ EXPOSE 5000
 
 COPY app.py .
 
-STOPSIGNAL SIGTERM
-
 CMD ["flask", "run", "--debug"]
