@@ -59,4 +59,10 @@ services:
     image: "redis:alpine"
 ```
 Проверяем сборку docker compose командой `docker compose up -d`, при обращении к http://localhost:8000 должны получить вывод:  
-`Hello World! I have been seen 6 times.`  
+```bash
+$ curl http://localhost:8000
+Hello World! I have been seen 6 times.  
+$ curl http://localhost:8000
+Hello World! I have been seen 7 times.
+```
+
