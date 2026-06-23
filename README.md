@@ -202,5 +202,5 @@ $ docker compose down
 $ docker compose build
 $ docker compose up -d
 ```
-
-
+Настраиваем дашборд в grafana, смотрим результат:  
+![alt text](img/flask-monitoring.jpg)
