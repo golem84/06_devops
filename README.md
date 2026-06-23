@@ -70,6 +70,7 @@ Hello World! I have been seen 7 times.
 ```
 или в браузере: 
 ![alt text](./img/flask-redis.png)
+
 Чтобы пересобрать оба сервиса в docker compose используем команды  
 ```bash
 $ docker compose down
