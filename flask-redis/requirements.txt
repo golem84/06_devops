@@ -1,3 +1,2 @@
 flask
 redis
-prometeus_client

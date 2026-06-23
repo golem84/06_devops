@@ -36,11 +36,3 @@ scrape_configs:
       target_label: instance
     - target_label: __address__
       replacement: blackbox:9115
-      
-- job_name: flask-app
-  scrape_interval: 5s
-  metrics_path: /metrics
-  scheme: http
-  static_configs:
-  - targets:
-    - web:5000 
