@@ -1,0 +1,22 @@
+apiVersion: 1
+
+providers:
+  - name: 'default'
+    orgId: 1
+    folder: ''
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    options:
+      path: /etc/grafana/provisioning/dashboards
+
+dashboards:
+  - name: 'Site Visits'
+    id: null
+    uid: visits-dashboard
+    folder: ''
+    type: file
+    editable: true
+    version: 1
+    options:
+      path: /etc/grafana/provisioning/dashboards/visits.json
