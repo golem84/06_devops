@@ -159,6 +159,48 @@ volumes:
   prom_data:
   grafana_data:
 ```
-Проверяем стек командой `docker compose up -d`, входим в grafana и настраиваем дашборд для prometheus:
+Проверяем стек командой `docker compose up -d`, входим в grafana и настраиваем дашборд для prometheus:  
 ![alt text](./img/promgrafana.png)
+
+# 3. Добавляем мониторинг для приложения Flask через экспортера blackbox
+
+## 3.1. Редактируем настройки prometheus
+добавляем в файл настроек `./promgrafana/prometheus/prometheus.yml` еще одну задачу  
+по сбору метрик из blackbox, который в свою очередь будет мониторить Flask-приложение  
+здесь в целях указываем внешний адрес нашей VM и порт `http://10.0.2.15:8000`, который слушает приложение Flask  
+```yml
+- job_name: blackbox-http
+  metrics_path: /probe
+  params:
+    module: [http_2xx]
+  static_configs:
+  - targets:
+    - http://10.0.2.15:8000
+    - https://etis.psu.ru
+    - https://yandex.ru
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: blackbox:9115
+```
+
+## 3.2. добавляем еще один контейнер в ./promgrafana/docker-compose.yml`:  
+используем образ `prom/blackbox-exporter`, имя контейнера `blackbox`, пробрасываем порт `9115:9115`  
+```yml
+  blackbox:
+    image: prom/blackbox-exporter
+    container_name: blackbox
+    ports: 
+      - 9115:9115
+```
+## 3.3. перезапускаем стек promgrafana из соответствующей папки:  
+```bash
+$ docker compose down
+$ docker compose build
+$ docker compose up -d
+```
+
 

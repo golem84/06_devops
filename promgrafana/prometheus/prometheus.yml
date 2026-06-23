@@ -28,7 +28,7 @@ scrape_configs:
   - targets:
     - http://10.0.2.15:8000 # change to 10.0.2.15:8000
     - https://etis.psu.ru
-    - https://github.com
+    - https://yandex.ru
   relabel_configs:
     - source_labels: [__address__]
       target_label: __param_target
