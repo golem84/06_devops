@@ -68,7 +68,8 @@ Hello World! I have been seen 6 times.
 $ curl http://localhost:8000
 Hello World! I have been seen 7 times.
 ```
-или в браузере: 
+или в браузере:
+
 ![alt text](./img/flask-redis.png)
 
 Чтобы пересобрать оба сервиса в docker compose используем команды  
