@@ -1,0 +1,22 @@
+{
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Visits per second",
+      "targets": [
+        {
+          "expr": "rate(flask_site_visits_total[1m])",
+          "legendFormat": "req/s"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "min": 0
+        }
+      }
+    }
+  ],
+  "time": { "from": "now-1h", "to": "now" },
+  "refresh": "5s"
+}
